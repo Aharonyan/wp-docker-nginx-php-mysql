@@ -2,6 +2,7 @@ version: '3.7'
 services:
     web:
         image: nginx:alpine
+        container_name: web-nginx
         volumes:
             - "./etc/nginx/default.conf:/etc/nginx/conf.d/default.conf"
             - "./etc/ssl:/etc/ssl"
@@ -18,16 +19,42 @@ services:
             - php
             - mysql
     php:
-        image: nanoninja/php-fpm:${PHP_VERSION}
-        restart: always
+        build:
+            context: .
+            dockerfile: Dockerfile
+            args:
+                - PHP_VERSION=${PHP_VERSION}
+        container_name: php_wp-cli
         volumes:
             - "./etc/php/php.ini:/usr/local/etc/php/conf.d/php.ini"
             - "./web:/var/www/html"
+        depends_on:
+            - mysql
+        links:
+            - mysql:mysql
+        restart: always
+
     composer:
         image: "composer"
+        container_name: composer
         volumes:
             - "./web/app:/app"
         command: install
+
+    # wp-cli:
+    #     build:
+    #         context: .
+    #         dockerfile: Dockerfile
+    #     container_name: wp-cli
+    #     volumes:
+    #         - "./etc/php/php.ini:/usr/local/etc/php/conf.d/php.ini"
+    #         - "./web:/var/www/html"
+    #     depends_on:
+    #         - mysql
+    #     links:
+    #         - mysql:mysql
+    #     restart: always
+
     mysql:
         image: mysql:${MYSQL_VERSION}
         container_name: ${MYSQL_HOST}
