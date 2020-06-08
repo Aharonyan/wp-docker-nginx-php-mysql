@@ -13,3 +13,4 @@ CMD cron && docker-php-entrypoint php-fpm
 # Note: Use docker-compose up -d --force-recreate --build when Dockerfile has changed.
 # This comand for use it better alias dc-wp="docker-compose run --rm php wp --allow-root"
 # docker exec -it php_wp-cli bash
+# apt-get -y install default-mysql-client

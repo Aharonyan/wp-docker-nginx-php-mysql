@@ -10,6 +10,7 @@ web/app/doc/
 web/app/report/
 data/
 web/public/*
+!web/public/test.test
 
 # PHPStorm
 .idea/**/workspace.xml
@@ -23,5 +24,5 @@ nbproject/
 /nbproject/private/private.properties
 
 # SSL Certs
-etc/ssl/
+#etc/ssl/
 
