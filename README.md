@@ -181,6 +181,7 @@ For a better integration of Docker to PHPStorm, use the [documentation](https://
 ___
 
 ## Run the application
+sudo only for linux users
 
 1. Adding files to web/app/domain.name 
 
@@ -198,19 +199,28 @@ ___
 
 3. Open your favorite browser :
 
-    * [http://domain_name:8000](http://localhost:8000/)
-    * [https://domain_name:3000](https://localhost:3000/) ([HTTPS](#configure-nginx-with-ssl-certificates) not configured by default)
-    * [http://domain_name:8080](http://localhost:8080/) PHPMyAdmin (username: dev, password: dev)
+    * [http://domain:8000](http://localhost:8000/)
+    * [https://domain:3000](https://localhost:3000/) ([HTTPS](#configure-nginx-with-ssl-certificates))
+    * [http://domain:8080](http://localhost:8080/) PHPMyAdmin (username: dev, password: dev)
 
 4. Stop and clear services
 
     ```sh
     sudo docker-compose down -v
     ```
+    this will delete stop and delete docker images
 
+5. Start already created docker images
+    ```sh
+    sudo docker-compose start
+    ```
+6. Start already created docker images
+    ```sh
+    sudo docker-compose stop
+    ```
 ___
 
-## Use Makefile
+## Use Makefile (only for linux)
 
 When developing, you can use [Makefile](https://en.wikipedia.org/wiki/Make_(software)) for doing the following operations :
 
