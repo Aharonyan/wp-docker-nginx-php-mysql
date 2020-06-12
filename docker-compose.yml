@@ -33,12 +33,12 @@ services:
             - mysql:mysql
         restart: always
 
-    composer:
-        image: "composer"
-        container_name: www-composer
-        volumes:
-            - "./web/app:/app"
-        command: install
+    # composer:
+    #     image: "composer"
+    #     container_name: www-composer
+    #     volumes:
+    #         - "./web/app:/app"
+    #     command: install
 
     # wp-cli:
     #     build:

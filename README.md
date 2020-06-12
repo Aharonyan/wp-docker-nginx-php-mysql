@@ -36,8 +36,6 @@ ___
 
 ## Install prerequisites
 
-For now, this project has been mainly created for Unix `(Linux/MacOS)`. Perhaps it could work on Windows.
-
 All requisites should be available for your distribution. The most important are :
 
 * [Git](https://git-scm.com/downloads)
@@ -146,7 +144,7 @@ You can change the host name by editing the `.env` file.
 
 If you modify the host name, do not forget to add it to the `/etc/hosts` file.
 
-1. Generate SSL certificates
+1. Generate SSL certificates (optional)
 
     ```sh
     source .env && sudo docker run --rm -v $(pwd)/etc/ssl:/certificates -e "SERVER=$NGINX_HOST" jacoelho/generate-certificate
@@ -214,7 +212,7 @@ sudo only for linux users
     ```sh
     sudo docker-compose start
     ```
-6. Start already created docker images
+6. Stop already created docker images
     ```sh
     sudo docker-compose stop
     ```
