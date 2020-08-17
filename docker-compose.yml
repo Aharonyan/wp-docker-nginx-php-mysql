@@ -33,27 +33,6 @@ services:
             - mysql:mysql
         restart: always
 
-    # composer:
-    #     image: "composer"
-    #     container_name: www-composer
-    #     volumes:
-    #         - "./web/app:/app"
-    #     command: install
-
-    # wp-cli:
-    #     build:
-    #         context: .
-    #         dockerfile: etc/php
-    #     container_name: wp-cli
-    #     volumes:
-    #         - "./etc/php/php.ini:/usr/local/etc/php/conf.d/php.ini"
-    #         - "./web:/var/www/html"
-    #     depends_on:
-    #         - mysql
-    #     links:
-    #         - mysql:mysql
-    #     restart: always
-
     mysql:
         image: mysql:${MYSQL_VERSION}
         container_name: www-${MYSQL_HOST}
@@ -61,10 +40,10 @@ services:
         env_file:
             - ".env"
         environment:
-            - MYSQL_DATABASE=${MYSQL_DATABASE}
+            # - MYSQL_DATABASE=${MYSQL_DATABASE}
             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-            - MYSQL_USER=${MYSQL_USER}
-            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+            # - MYSQL_USER=${MYSQL_USER}
+            # - MYSQL_PASSWORD=${MYSQL_PASSWORD}
         ports:
             - "8989:3306"
         volumes:
